@@ -5,11 +5,21 @@ description: Implement an Empirica experiment from a spec using the correct Clas
 
 Use this implementation checklist:
 
+Runtime command policy for this repo:
+- Do not use `npm run build`/`npm test` to validate the Empirica app.
+- Only install dependencies with `npm install` in `client/` and `server/`.
+- Start and run the app with `empirica` from repository root.
+- If a full integration build check is needed, run `empirica bundle` from repository root.
+
 0. Confirm relevant Empirica references before editing:
    - docs: https://docs.empirica.ly/
    - framework repo: https://github.com/empiricaly/empirica
    - docs repo: https://github.com/empiricaly/docsv2
    - project reference map: `schema/empirica-reference.json` if present
+0.5 Configure required admin auth placeholders before implementation/testing:
+   - open `.empirica/empirica.toml`
+   - replace `CHANGE_ME_SRTOKEN` and `CHANGE_ME_PASSWORD` with real values
+   - use those configured admin credentials consistently in automation/test commands
 
 Generalizable implementation defaults:
 - Preserve lifecycle semantics: intro/exit are asynchronous; rounds/stages are synchronous.

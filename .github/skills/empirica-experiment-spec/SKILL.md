@@ -5,6 +5,12 @@ description: Turn a researcher prompt into a complete Empirica experiment specif
 
 When a researcher describes an experiment, do this before writing code:
 
+Runtime command policy for this repo:
+- Do not use `npm run build`/`npm test` to validate the Empirica app.
+- Only install dependencies with `npm install` in `client/` and `server/`.
+- Start and run the app with `empirica` from repository root.
+- If a full integration build check is needed, run `empirica bundle` from repository root.
+
 0. Ground yourself in Empirica references before proposing details:
    - docs: https://docs.empirica.ly/
    - framework repo: https://github.com/empiricaly/empirica
@@ -80,10 +86,11 @@ Generalizable Empirica defaults to enforce in every spec:
    - ask for explicit confirmation or requested changes.
 
 5. End with a build plan ordered by file edits and a test plan.
-   - test plan must include strict E2E completion criteria:
-     - required participant count per treatment launched
-     - all simulated participants reach final exit
-     - condition-specific interactions exercised for each treatment
+   - include implementation setup step to configure `.empirica/empirica.toml` auth placeholders (`CHANGE_ME_SRTOKEN`, `CHANGE_ME_PASSWORD`) before admin/testing flows.
+    - test plan must include strict E2E completion criteria:
+      - required participant count per treatment launched
+      - all simulated participants reach final exit
+      - condition-specific interactions exercised for each treatment
 
 Output format:
 - Start with a concise assumptions list.

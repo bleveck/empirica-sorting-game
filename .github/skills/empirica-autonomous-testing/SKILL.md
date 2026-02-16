@@ -5,6 +5,12 @@ description: Run the experiment autonomously, capture screenshots across partici
 
 Use this when asked to test the experiment end-to-end and show visual progress.
 
+Runtime command policy for this repo:
+- Do not use `npm run build`/`npm test` to validate the Empirica app.
+- Only install dependencies with `npm install` in `client/` and `server/`.
+- Start and run the app with `empirica` from repository root.
+- If a full integration build check is needed, run `empirica bundle` from repository root.
+
 Before running tests, review relevant Empirica references:
 - docs: https://docs.empirica.ly/
 - framework repo: https://github.com/empiricaly/empirica
@@ -23,8 +29,9 @@ Generalizable runtime checks for any Empirica experiment:
 ## Workflow
 
 1. Start local experiment:
-   - `empirica` in repository root.
-   - use admin credentials from `.empirica/empirica.toml` to access `/admin`.
+    - `empirica` in repository root.
+    - use admin credentials from `.empirica/empirica.toml` to access `/admin`.
+    - if `.empirica/empirica.toml` still has `CHANGE_ME_SRTOKEN` or `CHANGE_ME_PASSWORD`, stop and configure them first during implementation.
 
 2. Run screenshot capture script:
    - `node .github/skills/empirica-autonomous-testing/scripts/capture-screenshots.mjs --base http://localhost:3000 --out .github/skills/empirica-autonomous-testing/artifacts --paths /,/admin`

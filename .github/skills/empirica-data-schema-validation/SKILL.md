@@ -5,6 +5,12 @@ description: Validate experiment data by comparing the researcher-declared schem
 
 Use this skill after implementing or changing experiment logic.
 
+Runtime command policy for this repo:
+- Do not use `npm run build`/`npm test` to validate the Empirica app.
+- Only install dependencies with `npm install` in `client/` and `server/`.
+- Start and run the app with `empirica` from repository root.
+- If a full integration build check is needed, run `empirica bundle` from repository root.
+
 Before validation, review relevant Empirica references:
 - docs: https://docs.empirica.ly/
 - framework repo: https://github.com/empiricaly/empirica
