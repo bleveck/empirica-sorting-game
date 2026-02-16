@@ -1,0 +1,5 @@
+lobbies:
+- name: Default Shared Lobby
+  kind: shared
+  duration: 10m
+  strategy: ignore

@@ -1,0 +1,9 @@
+name = "copilot_exp"
+
+[tajriba.auth]
+srtoken = "CHANGE_ME_SRTOKEN"
+
+[[tajriba.auth.users]]
+name = "Admin"
+username = "admin"
+password = "CHANGE_ME_PASSWORD"

@@ -1,0 +1,20 @@
+factors:
+  - desc: playerCount determines the number of Players are in a Game.
+    name: playerCount
+    values:
+      - value: 2
+  - desc: stageDurationSec sets the Task stage timer in seconds.
+    name: stageDurationSec
+    values:
+      - value: 300
+  - desc: roundsPerGame sets how many rounds run in each game.
+    name: roundsPerGame
+    values:
+      - value: 1
+treatments:
+  - desc: "Default baseline treatment."
+    factors:
+      playerCount: 2
+      stageDurationSec: 300
+      roundsPerGame: 1
+    name: Default

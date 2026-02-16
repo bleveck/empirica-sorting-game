@@ -1,0 +1,15 @@
+{
+  "required": [
+    { "key": "task", "scope": "round", "unit": "round", "description": "Task identifier for round routing and analysis grouping.", "source": "server", "export_files": ["round.csv"] },
+    { "key": "submit", "scope": "stage", "unit": "player-stage", "description": "Whether a player submitted/finished the current stage.", "source": "client", "export_files": ["stage.csv", "playerStage.csv"] },
+    { "key": "winnerId", "scope": "round", "unit": "round", "description": "Winning player identifier for the round.", "source": "server_or_stage", "export_files": ["round.csv"] },
+    { "key": "timeToWinMs", "scope": "round", "unit": "round", "description": "Elapsed milliseconds from first move to winning move.", "source": "server", "export_files": ["round.csv"] },
+    { "key": "centerPreferenceRate", "scope": "player_and_round", "unit": "player-round and player", "description": "Share of moves made in center column.", "source": "server_and_client", "export_files": ["player.csv", "round.csv"] },
+    { "key": "playerCount", "scope": "treatment", "unit": "game treatment config", "description": "Number of players required for a game in this treatment.", "source": "treatments_yaml", "export_files": ["game.csv"] },
+    { "key": "stageDurationSec", "scope": "treatment", "unit": "game treatment config", "description": "Stage timer duration in seconds for this treatment.", "source": "treatments_yaml", "export_files": ["game.csv"] }
+  ],
+  "optional": [
+    { "key": "score", "scope": "player", "source": "server" },
+    { "key": "moves", "scope": "stage_or_round", "source": "client" }
+  ]
+}

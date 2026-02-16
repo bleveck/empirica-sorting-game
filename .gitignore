@@ -1,0 +1,12 @@
+data_exports
+*.DS_Store
+node_modules/
+**/node_modules/
+.env
+.env.*
+!.env.example
+.empirica/id
+.empirica/local/
+.github/skills/empirica-autonomous-testing/artifacts/
+*.zip
+*.log
