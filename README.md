@@ -1,5 +1,7 @@
 # Empirica Copilot
 
+![alt text](image.png)
+
 A starter template + skill pack for creating and testing [Empirica](https://empirica.ly/) experiments with AI assistance.
 
 ## What this repo is
