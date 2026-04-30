@@ -2,7 +2,7 @@
 
 An interactive web-based game lab implementing the group-sorting game described in `group_sorting_game.typ`. Players are randomly assigned a type (A or B) and an initial group (1 or 2). Each round they see the composition of both groups, earn a payoff based on whether their type wins their group's local majority (reward `r`) minus a congestion cost that scales with group size, then choose to stay or switch groups. The game ends after a configurable number of rounds, or earlier if the class reaches a perfectly sorted equilibrium (all A's in one group, all B's in the other).
 
-This repo is an [Empirica](https://empirica.ly/) experiment (built against `@empirica/core@1.12.5`).
+This repo is an [Empirica](https://empirica.ly/) v2 experiment (`@empirica/core@1.12.5` — the package is numbered 1.x even though it's the rewritten v2 of the platform).
 
 ## What's in here
 
