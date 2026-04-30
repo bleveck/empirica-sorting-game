@@ -1,20 +1,73 @@
 factors:
-  - desc: playerCount determines the number of Players are in a Game.
+  - desc: Number of players in the game.
     name: playerCount
     values:
-      - value: 2
-  - desc: stageDurationSec sets the Task stage timer in seconds.
-    name: stageDurationSec
+      - value: 4
+      - value: 50
+  - desc: Number of rounds (game ends earlier if perfectly sorted).
+    name: rounds
     values:
-      - value: 300
-  - desc: roundsPerGame sets how many rounds run in each game.
-    name: roundsPerGame
+      - value: 5
+      - value: 20
+  - desc: Cost paid by a player who switches groups (0 = no cost).
+    name: switchingCost
     values:
+      - value: 0
       - value: 1
+  - desc: Reward for being in a group whose local-majority outcome matches your type.
+    name: r
+    values:
+      - value: 4
+  - desc: Per-target-group congestion factor. Effective per-other-person cost = c / max(1, (N/2) - 1).
+    name: c
+    values:
+      - value: 2
+  - desc: Result stage duration in seconds.
+    name: resultDuration
+    values:
+      - value: 12
+  - desc: Switch decision stage duration in seconds.
+    name: switchDuration
+    values:
+      - value: 30
 treatments:
-  - desc: "Default baseline treatment."
+  - desc: "Local testing: 4 players, 5 rounds, no switching cost."
     factors:
-      playerCount: 2
-      stageDurationSec: 300
-      roundsPerGame: 1
-    name: Default
+      playerCount: 4
+      rounds: 5
+      switchingCost: 0
+      r: 4
+      c: 2
+      resultDuration: 12
+      switchDuration: 30
+    name: Test
+  - desc: "Local testing: 4 players, 5 rounds, switching cost = 1."
+    factors:
+      playerCount: 4
+      rounds: 5
+      switchingCost: 1
+      r: 4
+      c: 2
+      resultDuration: 12
+      switchDuration: 30
+    name: Test_SwitchCost
+  - desc: "Class session A: 50 players, 20 rounds, no switching cost. Override playerCount at batch creation to match attendance."
+    factors:
+      playerCount: 50
+      rounds: 20
+      switchingCost: 0
+      r: 4
+      c: 2
+      resultDuration: 12
+      switchDuration: 30
+    name: Class_NoSwitchCost
+  - desc: "Class session B: 50 players, 20 rounds, switching cost = 1. Override playerCount at batch creation to match attendance."
+    factors:
+      playerCount: 50
+      rounds: 20
+      switchingCost: 1
+      r: 4
+      c: 2
+      resultDuration: 12
+      switchDuration: 30
+    name: Class_SwitchCost

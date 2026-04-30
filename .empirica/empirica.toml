@@ -1,4 +1,4 @@
-name = "copilot_exp"
+name = "sorting_game"
 
 [tajriba.auth]
 srtoken = "CHANGE_ME_SRTOKEN"

@@ -1,23 +1,21 @@
-import { usePlayer, usePlayers } from "@empirica/core/player/classic/react";
+import {
+  useStage,
+} from "@empirica/core/player/classic/react";
 import { Loading } from "@empirica/core/player/react";
 import React from "react";
-import { Task } from "./task-design/Task";
+import { Result } from "./stages/Result";
+import { SwitchDecision } from "./stages/SwitchDecision";
 
 export function Stage() {
-  const player = usePlayer();
-  const players = usePlayers();
+  const stage = useStage();
+  const stageName = stage?.get("name");
 
-  if (player.stage.get("submit")) {
-    if (players.length === 1) {
+  switch (stageName) {
+    case "Result":
+      return <Result />;
+    case "SwitchDecision":
+      return <SwitchDecision />;
+    default:
       return <Loading />;
-    }
-
-    return (
-      <div className="text-center text-gray-400 pointer-events-none">
-        Please wait for other player(s).
-      </div>
-    );
   }
-
-  return <Task />;
 }

@@ -5,6 +5,7 @@ import React from "react";
 import { ExitSurvey } from "./exit/ExitSurvey";
 import { Game } from "./Game";
 import { Introduction } from "./intro/Introduction";
+import { PlayerRegistration } from "./intro/PlayerRegistration";
 
 export default function App() {
   const urlParams = new URLSearchParams(window.location.search);
@@ -13,11 +14,11 @@ export default function App() {
   const { protocol, host } = window.location;
   const url = `${protocol}//${host}/query`;
 
-  function introSteps({ game, player }) {
+  function introSteps() {
     return [Introduction];
   }
 
-  function exitSteps({ game, player }) {
+  function exitSteps() {
     return [ExitSurvey];
   }
 
@@ -26,7 +27,11 @@ export default function App() {
       <div className="h-screen relative">
         <EmpiricaMenu position="bottom-left" />
         <div className="h-full overflow-auto">
-          <EmpiricaContext introSteps={introSteps} exitSteps={exitSteps}>
+          <EmpiricaContext
+            playerCreate={PlayerRegistration}
+            introSteps={introSteps}
+            exitSteps={exitSteps}
+          >
             <Game />
           </EmpiricaContext>
         </div>
