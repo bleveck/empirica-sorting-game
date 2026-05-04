@@ -37,16 +37,28 @@ empirica --help
 ```bash
 git clone https://github.com/bleveck/empirica-sorting-game.git
 cd empirica-sorting-game
+cp .empirica/empirica.toml.example .empirica/empirica.toml
 empirica
 ```
 
-The first run installs npm dependencies in `client/` and `server/` automatically and starts a local dev server. When you see something like `server: started`, it's ready.
+### First-time setup: `.empirica/empirica.toml`
+
+The repo doesn't ship a live `empirica.toml` (it's gitignored to avoid leaking credentials). Copy the example and fill in two values:
+
+- `password` — the admin password you'll use to log in to `/admin`. For local testing, anything works (e.g. `localdev`).
+- `srtoken` — a long random "service registration" token. The Empirica server and its callbacks process use it to auth with each other (you never type it). Generate one with `openssl rand -hex 32` and paste the output.
+
+For purely local testing you can leave the placeholders (`CHANGE_ME_PASSWORD`, `CHANGE_ME_SRTOKEN`) — they'll work as literal strings — but for any production deploy, set real values.
+
+### Running
+
+The first `empirica` run installs npm dependencies in `client/` and `server/` automatically and starts a local dev server. When you see `server: started`, it's ready.
 
 Open two browser tabs:
 
 - **Admin panel**: <http://localhost:3000/admin>
   - Username: `admin`
-  - Password: `CHANGE_ME_PASSWORD` (the placeholder in `.empirica/empirica.toml` — change it for production but the default is fine for local testing)
+  - Password: whatever you set in `empirica.toml`
 - **Player view**: <http://localhost:3000/>
 
 ## Test with 4 simulated players
