@@ -8,6 +8,7 @@ node_modules/
 .empirica/id
 .empirica/local/
 .empirica/local-runbook.md
+.empirica/empirica.toml
 .claude/settings.local.json
 .github/skills/empirica-autonomous-testing/artifacts/
 *.zip
