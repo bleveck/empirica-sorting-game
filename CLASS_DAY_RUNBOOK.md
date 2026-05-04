@@ -42,10 +42,11 @@ Server auto-restarts on bundle detection — give it ~15 seconds, then reload `h
 | ~0:10  | Students connect + register                | URL: `https://poli172.games`                                 |
 | ~0:13  | **Session A** (no switching cost) starts   | 20 rounds × ~42s each ≈ ~14 min (or earlier if sorted)       |
 | ~0:27  | Session A exit survey                      | ~2 min                                                       |
-| ~0:30  | **Session B** (switching cost = 1) starts  | New batch — students re-register                              |
-| ~0:44  | Session B exit survey                      |                                                              |
-| ~0:47  | Export data                                |                                                              |
-| ~0:50  | Debrief / discussion                       | ~25 min remaining                                            |
+| ~0:30  | **Export + wipe DB**                       | ~2 min — required so students can re-register                |
+| ~0:32  | **Session B** (switching cost = 1) starts  | Students re-register with same name/email                    |
+| ~0:46  | Session B exit survey                      |                                                              |
+| ~0:49  | Final export                               |                                                              |
+| ~0:51  | Debrief / discussion                       | ~24 min remaining                                            |
 
 Per-round timing: 12s Result + 30s SwitchDecision = 42s max. Most rounds end well before the timer because students submit early.
 
@@ -69,10 +70,29 @@ Both groups need at least 1 player to make the game playable, so try to keep `pl
 3. The lobby holds them until everyone joins. Once the batch fills, the game starts automatically.
 4. Students play up to 20 rounds, see their summary, and complete the exit survey.
 
+### Between sessions: export + wipe DB
+
+This step is **required**. Once a student has played one game, Empirica considers them "ended" — they can't join a second batch in the same database. Wiping the DB resets that. The names + email prefixes match across exports so you can still link a student's Session A and Session B data later.
+
+```bash
+# Export Session A data
+ssh root@<server-ip>
+cd ~/empirica && empirica export
+exit
+
+# Download to your laptop
+scp root@<server-ip>:~/empirica/*.zip ~/Desktop/
+
+# Wipe the DB and restart
+ssh root@<server-ip> 'systemctl stop empirica && rm /root/empirica/.empirica/local/tajriba.json && systemctl start empirica'
+```
+
+Wait ~10 seconds for the server to come back up before creating the next batch. Tell students they will need to re-register (same name/email) — takes ~30 seconds.
+
 ### Session B — `Class_SwitchCost`
 
-1. After Session A finishes (everyone hits the exit survey), create a new batch with `Class_SwitchCost`.
-2. Tell students to refresh `https://poli172.games`. They re-enter the same name/email so their data is identifiable across sessions.
+1. With the DB wiped and the server back up, create a new batch with `Class_SwitchCost`. Override `playerCount` to attendance.
+2. Tell students to refresh `https://poli172.games` and re-enter the **same** first/last name and email prefix as Session A.
 3. Students play 20 more rounds with the switching cost in effect.
 
 ## Early-termination behavior
