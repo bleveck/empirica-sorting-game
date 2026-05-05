@@ -81,7 +81,7 @@ cd ~/empirica && empirica export
 exit
 
 # Download to your laptop
-scp root@<server-ip>:~/empirica/*.zip ~/Desktop/
+scp 'root@<server-ip>:~/empirica/*.zip' ~/Desktop/
 
 # Wipe the DB and restart
 ssh root@<server-ip> 'systemctl stop empirica && rm /root/empirica/.empirica/local/tajriba.json && systemctl start empirica'
@@ -109,7 +109,7 @@ cd ~/empirica && empirica export
 Download exports:
 
 ```bash
-scp root@<server-ip>:"~/empirica/*.zip" ~/Desktop/
+scp 'root@<server-ip>:~/empirica/*.zip' ~/Desktop/
 ```
 
 The export includes per-round group composition (A/B counts and sizes for both groups) under `game.groupHistory`, and per-player per-round stats under `player.roundStats_*`. See `game_spec.md` and `group_sorting_game.typ` for variable definitions.

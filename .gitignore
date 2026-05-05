@@ -9,6 +9,7 @@ node_modules/
 .empirica/local/
 .empirica/local-runbook.md
 .empirica/empirica.toml
+CLASS_DAY_RUNBOOK_*.md
 .claude/settings.local.json
 .github/skills/empirica-autonomous-testing/artifacts/
 *.zip
